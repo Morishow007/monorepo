@@ -14,6 +14,14 @@ To get started with the project, follow these steps:
    git clone https://github.com/your-username/your-project.git
 
 
+## Instalation
+
+To install dependencies, use the following command:
+
+```bash
+npm install
+
+
 ## Development
 
 To run the project in development mode, use the following command:
