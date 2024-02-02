@@ -12,3 +12,11 @@ To get started with the project, follow these steps:
 
    ```bash
    git clone https://github.com/your-username/your-project.git
+
+
+## Development
+
+To run the project in development mode, use the following command:
+
+```bash
+npm run dev
