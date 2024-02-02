@@ -91,6 +91,7 @@ export const StyledForm = styled.div`
 
 export const ErrorMessage = styled.p`
   color: #e60000;
+  text-align: left;
 
   &::before {
     display: inline;

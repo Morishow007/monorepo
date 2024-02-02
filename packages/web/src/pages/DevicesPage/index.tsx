@@ -33,12 +33,13 @@ export const DevicesPage = () => {
   const { devices } = useDeviceStore()
   const { mutate: refreshMutate } = useRefreshDevices()
   const [currentPage, setCurrentPage] = useState(1)
+  const [itemsPerPage, setItemsPerPage] = useState(10)
 
-  const itemsPerPage = 10
   const startIndex = (currentPage - 1) * itemsPerPage
   const endIndex = startIndex + itemsPerPage
   const devicesToDisplay = devices.slice(startIndex, endIndex)
   const totalPages = Math.ceil(devices.length / itemsPerPage)
+  const itemsPerPageOptions = [10, 20, 30, 50]
 
   const handleAddDeviceButtonClick = () => {
     setShowNewDeviceForm(!showNewDeviceForm)
@@ -61,8 +62,16 @@ export const DevicesPage = () => {
     }
   }
 
-  const handlePageChange = (selectedPage: number) => {
-    setCurrentPage(selectedPage)
+  const handleItemsPerPageChange = (newItemsPerPage: number) => {
+    setItemsPerPage(newItemsPerPage)
+  }
+
+  const generateItemsPerPageOptions = () => {
+    return [10, 20, 30, 50].map((option, index) => (
+      <option key={index} value={option}>
+        {option} items per page
+      </option>
+    ))
   }
 
   return (
@@ -86,12 +95,14 @@ export const DevicesPage = () => {
             <ShowActionsContainer>
               <span>Showing</span>
               <Dropdown
-                value={currentPage}
-                onChange={(e) => handlePageChange(parseInt(e.target.value, 10))}
+                value={itemsPerPage}
+                onChange={(e) =>
+                  handleItemsPerPageChange(parseInt(e.target.value, 10))
+                }
               >
-                {[...Array(totalPages)].map((_, index) => (
-                  <option key={index + 1} value={index + 1}>
-                    {index + 1}
+                {itemsPerPageOptions.map((option, index) => (
+                  <option key={index} value={option}>
+                    {option}
                   </option>
                 ))}
               </Dropdown>
