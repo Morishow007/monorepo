@@ -1,8 +1,8 @@
-# Your Project Name
+# Monorepo
 
 ## Introduction
 
-Brief introduction to your project.
+A monorepo base project
 
 ## Installation
 
